@@ -1,0 +1,213 @@
+/* Global Style */
+* {
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: arial;
+    /* background-color: lightgreen; */
+    background-color: #0A153E;
+}
+
+/* Declaration Variable */
+/* :root {
+    
+} */
+
+/* Sidebar Style */
+.sidebar {
+    position: absolute;
+    left: 0;
+    width: 180px;
+    top: 0;
+    height: 100vh;
+    padding: 20px;
+    /* background-color: white; */
+}
+.sidebar.active {
+    width: 100px;
+}
+.sidebar .sidebar-top {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.sidebar .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 100px);
+    overflow-y: auto;
+}
+.sidebar .sidebar-content::-webkit-scrollbar {
+    display: none;
+}
+.sidebar .sidebar-content .menu-list {
+    display: flex;
+    flex-direction: column;
+}
+.sidebar .sidebar-content .menu {
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    /* color: black; */
+    color: white;
+    padding: 15px 0;
+    margin-top: 20px;
+}
+.sidebar .sidebar-content .menu-list .menu:nth-child(1) {
+    margin-top: 0;
+}
+.sidebar .sidebar-content .menu:hover {
+    background-color: lightblue;
+}
+.sidebar .sidebar-content .menu i {
+    /* padding: 20px; */
+    width: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.sidebar .sidebar-content .menu span {
+    font-size: 1.1rem;
+}
+.sidebar.active .sidebar-content .menu span {
+    display: none;
+}
+
+/* Home Page Style */
+.main-content {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    left: 100px;
+    right: 0;
+    padding: 30px 0;
+}
+.main-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: white;
+}
+.main-content .caption {
+    font-size: 1.2rem;
+    color: #707070;
+}
+.main-content .content {
+    width: 100%;
+    border-radius: 20px;
+    /* background-color: lightblue; */
+    background-color: #101C42;
+    padding: 30px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.main-content .content .display-cctv {
+    width: 75%;
+    height: 500px;
+    border-radius: 20px;
+    background-color: white;
+    overflow: hidden;
+}
+.main-content .content .display-cctv .canvas {
+    width: 100%;
+}
+.main-content .content .card-sensor {
+    width: 25%;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.main-content .content .card-sensor .card {
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.main-content .content .card-sensor .card .sensor {
+    font-size: 2rem;
+}
+
+/* Login Page Style */
+.login-page {
+    padding: 100px;
+    display: flex;
+}
+.main-left {
+    width: 50%;
+    border-radius: 20px 0 0 20px;
+    background-color: white;
+    padding: 130px;
+    display: flex;
+    flex-direction: column;
+}
+.main-left h1  {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.main-left span {
+    color: #707070;
+}
+.main-left .error-login {
+    display: none;
+}
+.main-left .error-login.active {
+    color: red;
+    margin-top: 10px;
+    display: block;
+}
+.main-left form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 20px;
+}
+.main-right {
+    width: 50%;
+    border-radius: 0 20px 20px 0;
+    padding: 20px;
+    background-color: lightcoral;
+}
+.main-left form .input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.main-left form .input input {
+    padding: 10px;
+    outline: none;
+    border-radius: 5px;
+    border: 1.5px solid #707070;
+    margin-top: 10px;
+}
+.main-left form a {
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.main-left form button {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    margin-top: 20px;
+    background-color: blue;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+.main-left form button:hover {
+    background-color: green;
+}

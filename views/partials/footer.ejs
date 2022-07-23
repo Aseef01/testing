@@ -1,0 +1,97 @@
+    </div>
+    <script src='<%= scriptUrl %>'></script>
+    <script src='js/jquery-3.6.0.min.js'></script>
+    <!-- <script src="script.js"></script> -->
+    <script>
+
+        let url = window.location.href
+
+        let arrayUrl = url.split('/')
+        let currentUrl = arrayUrl[arrayUrl.length - 1]
+
+        // Declaration Variable
+        const data = [
+            {
+                email: 'admin@gmail.com',
+                password: '123',
+            },
+            {
+                email: 'staff@gmail.com',
+                password: '123',
+            }
+        ]
+
+        const currentLogin = {}
+
+        const apikey = '2227729608'
+        const device_id = '2227729608_device_1'
+
+        if(currentUrl === 'homePage') {
+            // console.log(Object.keys(currentLogin).length === 0)
+            
+            // Display CCTV
+            loadPlayer({
+                url: 'ws://' + location.host + '/api/stream',
+                canvas: document.getElementById('canvas')
+            });
+
+            const oxygen = document.querySelector('.do')
+            const temperature = document.querySelector('.temperature')
+            const humidity = document.querySelector('.humidity')
+
+            // function numbering(number) {
+            //     let new_number = number.split('.')
+            //     new_number = new_number[0] + '.' + new_number[1]
+                // console.log(typeof number)
+                // console.log(typeof new_number)
+            // }
+
+            setInterval(() => {
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    url: 'http://api.dmsolution2u.com/api/streams?apikey=' + apikey + '&device=' + device_id,
+                    success: function(success) {
+                        success['result'].forEach(data => {
+                            oxygen.innerHTML = parseFloat(data['data']['DO']).toFixed(2) + 'mg/L'
+                            humidity.innerHTML = data['data']['Humidity'] + '%'
+                            temperature.innerHTML = data['data']['Temperature'] + '°C'
+                        })
+                    }
+                })
+            }, 1000)
+        } else {
+            const form = document.querySelector('form')
+            
+            
+            function login(event) {
+                event.preventDefault()
+                
+                const dataForm = new FormData()
+                const all_input = document.querySelectorAll('form .input input')
+                
+                for(let field of all_input) {
+                    dataForm.append(field.name, field.value)
+                }
+    
+                for(let [key, value] of dataForm.entries()) {
+                    (key === 'email') ? currentLogin["email"] = value : currentLogin["password"] = value; 
+                }
+    
+                data.forEach(data => {
+                    if(currentLogin.email === data.email && currentLogin.password === data.password) {
+                        // form.removeEventListener("submit", login);
+                        window.location.href = '/homePage'
+                    } else {
+                        const errorLogin = document.querySelector('.error-login')
+                        errorLogin.classList.add('active')
+                    }
+                })
+            }
+    
+            form.addEventListener('submit', login)
+        }
+
+    </script>
+</body>
+</html>
