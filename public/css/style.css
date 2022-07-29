@@ -177,8 +177,13 @@ body {
 .main-right {
     width: 50%;
     border-radius: 0 20px 20px 0;
-    padding: 20px;
+    /* padding: 20px; */
+    display: flex;
+    overflow: hidden;
     background-color: lightcoral;
+}
+.main-right img {
+    width: 100%;
 }
 .main-left form .input {
     display: flex;
